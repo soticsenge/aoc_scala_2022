@@ -40,7 +40,7 @@ object Range {
   }
 }
 
-object Cleanup extends App {
+object Day4 extends App {
   val filename = "/Users/csengesoti/IdeaProjects/aoc_scaéa/src/main/scala/source_cleanup.txt"
   val bufferedSource = Source.fromFile(filename)
   val b = bufferedSource.getLines.toList

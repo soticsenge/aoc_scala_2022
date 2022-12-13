@@ -1,6 +1,6 @@
 import scala.io.Source
 
-object Rucksack extends App {
+object Day3 extends App {
   val filename = "/Users/csengesoti/IdeaProjects/aoc_scaéa/src/main/scala/source_rs.txt"
   val bufferedSource = Source.fromFile(filename)
   // val a = bufferedSource.getLines.map(line => line.splitAt(line.length/2)).map(a=> a._1.toSet.intersect(a._2.toSet).head).map(getNumber).sum

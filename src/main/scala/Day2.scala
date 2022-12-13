@@ -1,6 +1,6 @@
 import scala.io.Source
 
-object RPS extends App {
+object Day2 extends App {
 
   def calcPoints(ABC: Char, XYZ: Char): Int = {
     // Z beats A

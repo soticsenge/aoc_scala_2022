@@ -41,7 +41,7 @@ case class SumWithDirList(sum: Int, dirlist: List[Int]) {
   }
 }
 
-object Files extends App {
+object Day7 extends App {
   val filename = "/Users/csengesoti/IdeaProjects/aoc_scaéa/src/main/scala/source_files.txt"
   val bufferedSource = Source.fromFile(filename)
   val b = bufferedSource.getLines.toList

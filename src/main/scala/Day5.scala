@@ -35,7 +35,7 @@ object Movement {
   }
 }
 
-object Crates extends App {
+object Day5 extends App {
 
   import Helper._
 

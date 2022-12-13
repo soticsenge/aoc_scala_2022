@@ -1,7 +1,7 @@
 import scala.collection.IterableOnce.iterableOnceExtensionMethods
 import scala.io.Source
 
-object Trees extends App {
+object Day8 extends App {
   val filename = "/Users/csengesoti/IdeaProjects/aoc_scaéa/src/main/scala/source_trees.txt"
   val bufferedSource = Source.fromFile(filename)
   val lines = bufferedSource.getLines.toList

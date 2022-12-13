@@ -1,7 +1,7 @@
 import java.util.stream.Collectors
 import scala.io.Source
 
-object Cals extends App {
+object Day1 extends App {
   val filename = "/Users/csengesoti/IdeaProjects/aoc_scaéa/src/main/scala/source.txt"
   val bufferedSource = Source.fromFile(filename)
   val a = bufferedSource.getLines.foldLeft((Array[Int](),List[Array[Int]]()))(
