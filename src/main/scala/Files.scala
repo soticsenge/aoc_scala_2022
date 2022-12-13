@@ -16,6 +16,21 @@ case class Tree(var files: ListBuffer[File], children: ListBuffer[Tree], dirName
     val c: Int = files.map(_.size).sum + w.map(_._1).sum
     (c, w.flatMap(_._2) :+ c)
   }
+
+  def calculateSize2(): (Int, List[Int]) = {
+    val w = map2(children.toList)((t: Tree) => t.calculateSize())
+    val c: Int = files.map(_.size).sum + w.map(_._1).sum
+    (c, w.flatMap(_._2) :+ c)
+  }
+
+  def map2[A, B](list: List[A])(function: (A) => B): List[B] = {
+    @tailrec
+    def loop(rem: List[A], acc: List[B]): List[B] = rem match {
+      case Nil => acc.reverse
+      case head :: tail => loop(tail, function(head) :: acc)
+    }
+    loop(list, Nil)
+  }
 }
 
 case class File(size: Int, name: String)
@@ -50,7 +65,11 @@ object Files extends App {
     }
   })
 
+  val a = System.currentTimeMillis()
   val result = tree.calculateSize()
+  val bv = System.currentTimeMillis()
+  println(a-bv)
+
   val remainingSpace = 30000000 - (70000000 - result._1)
   println(result._1, remainingSpace, result._2.sorted.reverse)
   println(result._2.filter(_ <= 100000).sorted.reverse.sum)
