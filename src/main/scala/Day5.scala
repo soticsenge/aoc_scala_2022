@@ -1,41 +1,41 @@
 import scala.io.Source
 
-object Helper {
-  def inverse[T](l: List[List[T]]): List[List[T]] = {
-    l.foldLeft(List.empty[List[T]])((acc: List[List[T]], newList: List[T]) => {
-      newList.zipWithIndex.map[List[T]] { case (e, i) => if (acc.isEmpty) List(e) else acc(i) :+ e }
-    })
-  }
-}
+object Day5 extends App {
 
-case class Movement(move: Int, from: Int, to: Int)
-
-case class DisplayCrates(crates: List[List[String]]) {
-
-  import Helper._
-
-  override def toString: String = {
-    val dim = crates.map(_.size).max
-    inverse(crates
-      .map(list => list ::: List.fill(dim - list.size)(" ")))
-      .map(list => list.map(letter => s" [$letter] ")
-        .mkString)
-      .reverse
-      .appended(" 1    2    3    4    5    6    7    8    9")
-      .mkString("\n")
-  }
-}
-
-object Movement {
-  def apply(str: String): Movement = {
-    str match {
-      case s"move $count from $from to $to" => Movement(count.toInt, from.toInt, to.toInt)
-      case _ => throw new Exception("bad input")
+  object Helper {
+    def inverse[T](l: List[List[T]]): List[List[T]] = {
+      l.foldLeft(List.empty[List[T]])((acc: List[List[T]], newList: List[T]) => {
+        newList.zipWithIndex.map[List[T]] { case (e, i) => if (acc.isEmpty) List(e) else acc(i) :+ e }
+      })
     }
   }
-}
 
-object Day5 extends App {
+  case class Movement(move: Int, from: Int, to: Int)
+
+  case class DisplayCrates(crates: List[List[String]]) {
+
+    import Helper._
+
+    override def toString: String = {
+      val dim = crates.map(_.size).max
+      inverse(crates
+        .map(list => list ::: List.fill(dim - list.size)(" ")))
+        .map(list => list.map(letter => s" [$letter] ")
+          .mkString)
+        .reverse
+        .appended(" 1    2    3    4    5    6    7    8    9")
+        .mkString("\n")
+    }
+  }
+
+  object Movement {
+    def apply(str: String): Movement = {
+      str match {
+        case s"move $count from $from to $to" => Movement(count.toInt, from.toInt, to.toInt)
+        case _ => throw new Exception("bad input")
+      }
+    }
+  }
 
   import Helper._
 
